@@ -12,7 +12,7 @@ jobs:
       - name: Install ESP32 board
         run: |
           arduino-cli core update-index --additional-urls https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
-          arduino-cli core install esp32:esp32@2.0.14 --additional-urls https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
+          arduino-cli core install esp32:esp32@2.0.11 --additional-urls https://raw.githubusercontent.com/espressif/arduino-esp32/gh-pages/package_esp32_index.json
       - name: Install libraries
         run: |
           arduino-cli lib install "LinkedList"
@@ -23,11 +23,11 @@ jobs:
           arduino-cli lib install "Adafruit BusIO"
           arduino-cli lib install "MicroNMEA"
           arduino-cli lib install "EspSoftwareSerial"
-          arduino-cli lib install "SD"
           mkdir -p ~/Arduino/libraries
           git clone https://github.com/marian-craciunescu/ESP32Ping ~/Arduino/libraries/ESP32Ping
           git clone https://github.com/me-no-dev/AsyncTCP ~/Arduino/libraries/AsyncTCP
           git clone https://github.com/me-no-dev/ESPAsyncWebServer ~/Arduino/libraries/ESPAsyncWebServer
+          sed -i 's/#include "md5.h"/#include "mbedtls\/md5.h"/' ~/Arduino/libraries/ESPAsyncWebServer/src/WebAuthentication.cpp
       - name: Build
         run: |
           arduino-cli compile --fqbn esp32:esp32:esp32s2 --build-property build.extra_flags="-DMARAUDER_FLIPPER -DARDUINO_USB_CDC_ON_BOOT=1" esp32_marauder/esp32_marauder.ino --output-dir build/
