@@ -412,7 +412,7 @@
     //#define HAS_NIMBLE_2
   #endif
 
-      #define ARDUINO_USB_CDC_ON_BOOT 1
+      #ifdef MARAUDER_FLIPPER
     #define HAS_FLIPPER_LED
     //#define FLIPPER_ZERO_HAT
     //#define HAS_BATTERY
