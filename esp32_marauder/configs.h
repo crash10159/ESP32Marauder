@@ -412,7 +412,7 @@
     //#define HAS_NIMBLE_2
   #endif
 
-  #ifdef MARAUDER_FLIPPER
+      #define ARDUINO_USB_CDC_ON_BOOT 1
     #define HAS_FLIPPER_LED
     //#define FLIPPER_ZERO_HAT
     //#define HAS_BATTERY
@@ -2521,7 +2521,7 @@
       #define SD_MOSI 14
     #endif
 
-    #ifdef MARAUDER_FLIPPER
+        #define ARDUINO_USB_CDC_ON_BOOT 1
       #define SD_CS 10
     #endif
 
@@ -3075,7 +3075,7 @@
   //// FUNNY FLIPPER LED STUFF
 
   #ifdef HAS_FLIPPER_LED
-    #ifdef MARAUDER_FLIPPER
+        #define ARDUINO_USB_CDC_ON_BOOT 1
       #define B_PIN 4
       #define G_PIN 5
       #define R_PIN 6
@@ -3132,3 +3132,5 @@
   #endif
 
 #endif
+
+
