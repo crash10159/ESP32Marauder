@@ -19,10 +19,16 @@ jobs:
           arduino-cli lib install "TFT_eSPI"
           arduino-cli lib install "ArduinoJson"
           arduino-cli lib install "Adafruit NeoPixel"
+          arduino-cli lib install "Adafruit GFX Library"
+          arduino-cli lib install "Adafruit BusIO"
           arduino-cli lib install "MicroNMEA"
           arduino-cli lib install "EspSoftwareSerial"
+          arduino-cli lib install "SD"
           mkdir -p ~/Arduino/libraries
           git clone https://github.com/marian-craciunescu/ESP32Ping ~/Arduino/libraries/ESP32Ping
+          git clone https://github.com/me-no-dev/AsyncTCP ~/Arduino/libraries/AsyncTCP
+          git clone https://github.com/me-no-dev/ESPAsyncWebServer ~/Arduino/libraries/ESPAsyncWebServer
+          git clone https://github.com/zhouhan0126/WIFIMANAGER-ESP32 ~/Arduino/libraries/WiFiManager
       - name: Build
         run: |
           arduino-cli compile --fqbn esp32:esp32:esp32s2 --build-property build.extra_flags="-DMARAUDER_FLIPPER -DARDUINO_USB_CDC_ON_BOOT=1" esp32_marauder/esp32_marauder.ino --output-dir build/
