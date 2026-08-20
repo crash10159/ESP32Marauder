@@ -21,7 +21,8 @@ jobs:
           arduino-cli lib install "Adafruit NeoPixel"
           arduino-cli lib install "MicroNMEA"
           arduino-cli lib install "EspSoftwareSerial"
-          arduino-cli lib install "ESP32Ping"
+          mkdir -p ~/Arduino/libraries
+          git clone https://github.com/marian-craciunescu/ESP32Ping ~/Arduino/libraries/ESP32Ping
       - name: Build
         run: |
           arduino-cli compile --fqbn esp32:esp32:esp32s2 --build-property build.extra_flags="-DMARAUDER_FLIPPER -DARDUINO_USB_CDC_ON_BOOT=1" esp32_marauder/esp32_marauder.ino --output-dir build/
