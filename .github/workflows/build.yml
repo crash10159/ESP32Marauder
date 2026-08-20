@@ -25,8 +25,9 @@ jobs:
           arduino-cli lib install "EspSoftwareSerial"
           mkdir -p ~/Arduino/libraries
           git clone https://github.com/marian-craciunescu/ESP32Ping ~/Arduino/libraries/ESP32Ping
-          git clone https://github.com/ESP32Async/AsyncTCP ~/Arduino/libraries/AsyncTCP
-          git clone https://github.com/ESP32Async/ESPAsyncWebServer ~/Arduino/libraries/ESPAsyncWebServer
+          git clone https://github.com/me-no-dev/AsyncTCP ~/Arduino/libraries/AsyncTCP
+          git clone https://github.com/me-no-dev/ESPAsyncWebServer ~/Arduino/libraries/ESPAsyncWebServer
+          sed -i 's|#include "md5.h"|#include <mbedtls/md5.h>|g' ~/Arduino/libraries/ESPAsyncWebServer/src/WebAuthentication.cpp
           sed -i 's|#include <md5.h>|#include <mbedtls/md5.h>|g' ~/Arduino/libraries/ESPAsyncWebServer/src/WebAuthentication.cpp
       - name: Build
         run: |
