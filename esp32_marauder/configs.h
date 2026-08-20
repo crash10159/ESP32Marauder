@@ -3110,7 +3110,6 @@
       #define G_PIN 16
       #define R_PIN 4
     #endif
-  #endif
 
   //// END FUNNY FLIPPER LED STUFF
 
@@ -3130,7 +3129,5 @@
     #endif
 
   #endif
-
-#endif
 
 
